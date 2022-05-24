@@ -165,7 +165,7 @@ var retina = window.devicePixelRatio,
     this.oscillationSpeed = random() * 1.5 + 0.5;
     this.xSpeed = 40.0;
     this.ySpeed = random() * 60 + 50.0;
-    this.corners = new Array();
+    this.corners = [];
     this.time = random();
     var ci = round(random() * (colors.length - 1));
     this.frontColor = colors[ci][0];
@@ -213,7 +213,7 @@ var retina = window.devicePixelRatio,
     this.particleDist = _dist;
     this.particleCount = _count;
     this.particleDrag = _drag;
-    this.particles = new Array();
+    this.particles = [];
     var ci = round(random() * (colors.length - 1));
     this.frontColor = colors[ci][0];
     this.backColor = colors[ci][1];
@@ -272,7 +272,7 @@ var retina = window.devicePixelRatio,
       var ci = round(random() * (colors.length - 1));
       this.frontColor = colors[ci][0];
       this.backColor = colors[ci][1];
-      this.particles = new Array();
+      this.particles = [];
       for (var i = 0; i < this.particleCount; i++) {
         this.particles[i] = new EulerMass(this.position.x, this.position.y - i * this.particleDist, this.particleDrag);
       }
@@ -370,7 +370,7 @@ var retina = window.devicePixelRatio,
     canvas.height = canvasHeight * retina;
     var context = canvas.getContext('2d');
     var interval = null;
-    var confettiRibbons = new Array();
+    var confettiRibbons = [];
     ConfettiRibbon.bounds = new Vector2(canvasWidth, canvasHeight);
     for (i = 0; i < confettiRibbonCount; i++) {
       confettiRibbons[i] = new ConfettiRibbon(
@@ -383,7 +383,7 @@ var retina = window.devicePixelRatio,
         0.05
       );
     }
-    var confettiPapers = new Array();
+    var confettiPapers = [];
     ConfettiPaper.bounds = new Vector2(canvasWidth, canvasHeight);
     for (i = 0; i < confettiPaperCount; i++) {
       confettiPapers[i] = new ConfettiPaper(random() * canvasWidth, random() * canvasHeight);

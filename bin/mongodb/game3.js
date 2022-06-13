@@ -23,8 +23,7 @@ function map(arr, key, f) {
 }
 
 function clean(arr, key) {
-  if (typeof arr[key] !== 'undefined' &&
-      (arr[key] === null || arr[key] === '')) {
+  if (typeof arr[key] !== 'undefined' && (arr[key] === null || arr[key] === '')) {
     delete arr[key];
   }
 }
@@ -40,18 +39,20 @@ function cleanOrRename(arr, from, to) {
   rename(arr, from, to);
 }
 
-function removeSpace(str) { return str.replace(/ /g, ''); }
+function removeSpace(str) {
+  return str.replace(/ /g, '');
+}
 
-function finishedOrAborted(game) { return game.status >= 25; }
+function finishedOrAborted(game) {
+  return game.status >= 25;
+}
 
 let c, z, pgn;
 let it = 0;
 let dat = new Date().getTime() / 1000;
-let finishedPlayerFieldsToRemove = [
-  'previousMoveTs', 'lastDrawOffer', 'isOfferingDraw', 'isProposingTakeback'
-];
+let finishedPlayerFieldsToRemove = ['previousMoveTs', 'lastDrawOffer', 'isOfferingDraw', 'isProposingTakeback'];
 
-gamesToMigrate.forEach(function(g) {
+gamesToMigrate.forEach(function (g) {
   cleanOrRename(g, 'castles', 'cs');
   if (g.cc === 'white') {
     delete g.cc;
@@ -97,7 +98,7 @@ gamesToMigrate.forEach(function(g) {
     }
   }
   rename(g, 'players', 'p');
-  g.p.forEach(function(p) {
+  g.p.forEach(function (p) {
     delete p.c;
     map(p, 'ps', removeSpace);
     if (finishedOrAborted(g) && typeof p.blurs !== 'undefined' && p.blurs < 7) {
@@ -117,7 +118,7 @@ gamesToMigrate.forEach(function(g) {
   delete g.pgn;
   collection.insert(g);
   if (pgn !== null && pgn !== '') {
-    pgnCollection.insert({_id : g._id, p : pgn});
+    pgnCollection.insert({ _id: g._id, p: pgn });
   }
   ++it;
   if (it % batchSize == 0) {
@@ -130,11 +131,11 @@ gamesToMigrate.forEach(function(g) {
 });
 
 print('Building indexes');
-collection.ensureIndex({s : 1});
-collection.ensureIndex({uids : 1}, {sparse : 1});
-collection.ensureIndex({wid : 1}, {sparse : 1});
-collection.ensureIndex({ca : -1});
-collection.ensureIndex({uids : 1, ca : -1});
-collection.ensureIndex({bm : 1}, {sparse : 1});
+collection.ensureIndex({ s: 1 });
+collection.ensureIndex({ uids: 1 }, { sparse: 1 });
+collection.ensureIndex({ wid: 1 }, { sparse: 1 });
+collection.ensureIndex({ ca: -1 });
+collection.ensureIndex({ uids: 1, ca: -1 });
+collection.ensureIndex({ bm: 1 }, { sparse: 1 });
 
 print('Done!');

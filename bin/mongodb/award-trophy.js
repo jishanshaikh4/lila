@@ -3,8 +3,8 @@ let user = 'thibault';
 let kind = 'marathonSurvivor';
 
 db.trophy.insert({
-  _id : kind + '/' + user,
-  user : user,
-  kind : kind,
-  date : new Date(),
+  _id: kind + '/' + user,
+  user: user,
+  kind: kind,
+  date: new Date(),
 });

@@ -10,50 +10,55 @@ let pause = 500;
 // players.drop();
 
 dest.ensureIndex({
-  status : 1,
+  status: 1,
 });
 dest.ensureIndex({
-  createdAt : 1,
+  createdAt: 1,
 });
 dest.ensureIndex({
-  startsAt : 1,
+  startsAt: 1,
 });
 pairings.ensureIndex({
-  tid : 1,
-  d : -1,
+  tid: 1,
+  d: -1,
 });
 pairings.ensureIndex({
-  tid : 1,
-  u : 1,
-  d : -1,
+  tid: 1,
+  u: 1,
+  d: -1,
 });
 players.ensureIndex({
-  tid : 1,
-  uid : 1,
+  tid: 1,
+  uid: 1,
 });
 players.ensureIndex({
-  tid : 1,
-  m : -1,
+  tid: 1,
+  m: -1,
 });
 
-let cursor = orig.find({
-                   status : 30,
-                 })
-                 .sort({
-                   createdAt : -1,
-                 }); //.limit(max);
+let cursor = orig
+  .find({
+    status: 30,
+  })
+  .sort({
+    createdAt: -1,
+  }); //.limit(max);
 
-function int(i) { return NumberInt(i); }
+function int(i) {
+  return NumberInt(i);
+}
 
 let uidIt = 0;
 
-function uid() { return 'i' + uidIt++; }
+function uid() {
+  return 'i' + uidIt++;
+}
 
 let it = 0;
 let max = cursor.count();
 let dat = new Date().getTime() / 1000;
 
-cursor.forEach(function(o) {
+cursor.forEach(function (o) {
   dest.insert(mkTour(o));
   insertPlayers(o);
   insertPairings(o);
@@ -75,20 +80,16 @@ function insertPlayers(o) {
   for (let i in o.players) {
     let p = o.players[i];
     let n = {
-      _id : uid(),
-      tid : o._id,
-      uid : p.id,
-      r : int(p.rating),
-      m : int(p.score * 1000000 + (p.perf || 0) * 1000 + p.rating),
+      _id: uid(),
+      tid: o._id,
+      uid: p.id,
+      r: int(p.rating),
+      m: int(p.score * 1000000 + (p.perf || 0) * 1000 + p.rating),
     };
-    if (p.withdraw)
-      n.w = true;
-    if (p.prov)
-      n.pr = true;
-    if (p.score)
-      n.s = int(p.score);
-    if (p.perf)
-      n.p = int(p.perf);
+    if (p.withdraw) n.w = true;
+    if (p.prov) n.pr = true;
+    if (p.score) n.s = int(p.score);
+    if (p.perf) n.p = int(p.perf);
     bulk.insert(n);
   }
   bulk.execute();
@@ -99,18 +100,15 @@ function insertPairings(o) {
   for (let i in o.pairings) {
     let p = o.pairings[i];
     let n = {
-      _id : p.g,
-      tid : o._id,
-      s : int(p.s),
-      u : p.u,
-      t : int(p.t),
+      _id: p.g,
+      tid: o._id,
+      s: int(p.s),
+      u: p.u,
+      t: int(p.t),
     };
-    if (p.w)
-      n.w = p.w == p.u[0];
-    if (p.b1)
-      n.b1 = int(p.b1);
-    if (p.b2)
-      n.b2 = int(p.b2);
+    if (p.w) n.w = p.w == p.u[0];
+    if (p.b1) n.b1 = int(p.b1);
+    if (p.b2) n.b2 = int(p.b2);
     bulk.insert(n);
   }
   bulk.execute();
@@ -119,28 +117,24 @@ function insertPairings(o) {
 function mkTour(o) {
   let nbPlayers = o.players.length;
   let n = {
-    _id : o._id,
-    name : o.name,
-    status : int(o.status),
-    clock : o.clock,
-    minutes : int(o.minutes),
-    nbPlayers : int(nbPlayers),
-    createdAt : o.createdAt,
-    createdBy : o.createdBy,
-    startsAt : o.schedule ? o.schedule.at : o.createdAt,
+    _id: o._id,
+    name: o.name,
+    status: int(o.status),
+    clock: o.clock,
+    minutes: int(o.minutes),
+    nbPlayers: int(nbPlayers),
+    createdAt: o.createdAt,
+    createdBy: o.createdBy,
+    startsAt: o.schedule ? o.schedule.at : o.createdAt,
   };
-  if (o.system && o.system != 1)
-    n.system = int(o.system);
-  if (o.variant && o.variant != 1)
-    n.variant = int(o.variant);
-  if (o.mode && o.mode != 1)
-    n.mode = int(o.mode);
+  if (o.system && o.system != 1) n.system = int(o.system);
+  if (o.variant && o.variant != 1) n.variant = int(o.variant);
+  if (o.mode && o.mode != 1) n.mode = int(o.mode);
   if (o.schedule)
     n.schedule = {
-      freq : o.schedule.freq,
-      speed : o.schedule.speed,
+      freq: o.schedule.freq,
+      speed: o.schedule.speed,
     };
-  if (nbPlayers)
-    n.winner = o.players[0].id;
+  if (nbPlayers) n.winner = o.players[0].id;
   return n;
 }

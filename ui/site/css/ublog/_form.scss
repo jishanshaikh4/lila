@@ -35,7 +35,7 @@
     height: auto;
   }
   &__delete {
-    padding: 10em 0 5em 0;
+    padding: 10em 0 5em;
   }
   &__etiquette {
     margin-right: 3em;
@@ -79,7 +79,7 @@
         @extend %metal, %box-radius-top;
         border-radius: 3px 3px 0 0 !important;
         border: 1px solid $c-border;
-        border-width: 1px 1px 0 1px;
+        border-width: 1px 1px 0;
       }
     }
     &-toolbar {
@@ -105,13 +105,13 @@
       .tab-item {
         height: 2em;
         line-height: 2em;
-        margin: 0 0 -1px 0;
+        margin: 0 0 -1px;
       }
     }
     &-ww-container,
     &-md-container {
       border: 1px solid $c-border;
-      border-width: 0 1px 1px 1px;
+      border-width: 0 1px 1px;
       border-radius: 0 0 3px 3px;
     }
     &.ww-mode,

@@ -4,7 +4,7 @@ window.fipr = (function () {
   var l = function (e, t) {
       (e = [e[0] >>> 16, 65535 & e[0], e[1] >>> 16, 65535 & e[1]]),
         (t = [t[0] >>> 16, 65535 & t[0], t[1] >>> 16, 65535 & t[1]]);
-      var n = [0, 0, 0, 0];
+      let n = [0, 0, 0, 0];
       return (
         (n[3] += e[3] + t[3]),
         (n[2] += n[3] >>> 16),
@@ -23,7 +23,7 @@ window.fipr = (function () {
     f = function (e, t) {
       (e = [e[0] >>> 16, 65535 & e[0], e[1] >>> 16, 65535 & e[1]]),
         (t = [t[0] >>> 16, 65535 & t[0], t[1] >>> 16, 65535 & t[1]]);
-      var n = [0, 0, 0, 0];
+      let n = [0, 0, 0, 0];
       return (
         (n[3] += e[3] * t[3]),
         (n[2] += n[3] >>> 16),
@@ -81,11 +81,11 @@ window.fipr = (function () {
     },
     d = function (e, t) {
       if (Array.prototype.forEach && e.forEach === Array.prototype.forEach) e.forEach(t);
-      else if (e.length === +e.length) for (var n = 0, r = e.length; n < r; n++) t(e[n], n, e);
-      else for (var a in e) e.hasOwnProperty(a) && t(e[a], a, e);
+      else if (e.length === +e.length) for (let n = 0, r = e.length; n < r; n++) t(e[n], n, e);
+      else for (let a in e) e.hasOwnProperty(a) && t(e[a], a, e);
     },
     a = function (e, r) {
-      var a = [];
+      let a = [];
       return null == e
         ? a
         : Array.prototype.map && e.map === Array.prototype.map
@@ -96,12 +96,12 @@ window.fipr = (function () {
           a);
     },
     n = function (e) {
-      var t = [window.screen.width, window.screen.height];
+      let t = [window.screen.width, window.screen.height];
       return e.screen.detectScreenOrientation && t.sort().reverse(), t;
     },
     r = function (e) {
       if (window.screen.availWidth && window.screen.availHeight) {
-        var t = [window.screen.availHeight, window.screen.availWidth];
+        let t = [window.screen.availHeight, window.screen.availWidth];
         return e.screen.detectScreenOrientation && t.sort().reverse(), t;
       }
       return e.NOT_AVAILABLE;
@@ -116,7 +116,7 @@ window.fipr = (function () {
             return e.name > t.name ? 1 : e.name < t.name ? -1 : 0;
           })),
         a(t, function (e) {
-          var t = a(e, function (e) {
+          let t = a(e, function (e) {
             return [e.type, e.suffixes];
           });
           return [e.name, e.description, t];
@@ -124,7 +124,7 @@ window.fipr = (function () {
       );
     },
     o = function (n) {
-      var e = [];
+      let e = [];
       return (
         (Object.getOwnPropertyDescriptor && Object.getOwnPropertyDescriptor(window, 'ActiveXObject')) ||
         'ActiveXObject' in window
@@ -168,7 +168,7 @@ window.fipr = (function () {
     },
     u = function (e) {
       for (var t = !1, n = 0, r = e.plugins.sortPluginsFor.length; n < r; n++) {
-        var a = e.plugins.sortPluginsFor[n];
+        let a = e.plugins.sortPluginsFor[n];
         if (navigator.userAgent.match(a)) {
           t = !0;
           break;
@@ -207,7 +207,7 @@ window.fipr = (function () {
       return navigator.platform ? navigator.platform : e.NOT_AVAILABLE;
     },
     t = function () {
-      var e,
+      let e,
         t = 0;
       'undefined' != typeof navigator.maxTouchPoints
         ? (t = navigator.maxTouchPoints)
@@ -220,10 +220,10 @@ window.fipr = (function () {
       return [t, e, 'ontouchstart' in window];
     },
     O = function (e) {
-      var t = [],
+      let t = [],
         n = document.createElement('canvas');
       (n.width = 2e3), (n.height = 200), (n.style.display = 'inline');
-      var r = n.getContext('2d');
+      let r = n.getContext('2d');
       return (
         r.rect(0, 0, 10, 10),
         r.rect(2, 2, 6, 6),
@@ -273,19 +273,19 @@ window.fipr = (function () {
         },
         o = I();
       if (!o) return null;
-      var c = [],
+      let c = [],
         t = o.createBuffer();
       o.bindBuffer(o.ARRAY_BUFFER, t);
-      var n = new Float32Array([-0.2, -0.9, 0, 0.4, -0.26, 0, 0, 0.732134444, 0]);
+      let n = new Float32Array([-0.2, -0.9, 0, 0.4, -0.26, 0, 0, 0.732134444, 0]);
       o.bufferData(o.ARRAY_BUFFER, n, o.STATIC_DRAW), (t.itemSize = 3), (t.numItems = 3);
-      var r = o.createProgram(),
+      let r = o.createProgram(),
         a = o.createShader(o.VERTEX_SHADER);
       o.shaderSource(
         a,
         'attribute vec2 attrVertex;varying vec2 varyinTexCoordinate;uniform vec2 uniformOffset;void main(){varyinTexCoordinate=attrVertex+uniformOffset;gl_Position=vec4(attrVertex,0,1);}'
       ),
         o.compileShader(a);
-      var i = o.createShader(o.FRAGMENT_SHADER);
+      let i = o.createShader(o.FRAGMENT_SHADER);
       o.shaderSource(
         i,
         'precision mediump float;varying vec2 varyinTexCoordinate;void main() {gl_FragColor=vec4(varyinTexCoordinate,0,1);}'
@@ -315,12 +315,12 @@ window.fipr = (function () {
         c.push(
           'webgl max anisotropy:' +
             (function (e) {
-              var t =
+              let t =
                 e.getExtension('EXT_texture_filter_anisotropic') ||
                 e.getExtension('WEBKIT_EXT_texture_filter_anisotropic') ||
                 e.getExtension('MOZ_EXT_texture_filter_anisotropic');
               if (t) {
-                var n = e.getParameter(t.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
+                let n = e.getParameter(t.MAX_TEXTURE_MAX_ANISOTROPY_EXT);
                 return 0 === n && (n = 2), n;
               }
               return null;
@@ -344,7 +344,7 @@ window.fipr = (function () {
         c.push('webgl vendor:' + o.getParameter(o.VENDOR)),
         c.push('webgl version:' + o.getParameter(o.VERSION));
       try {
-        var u = o.getExtension('WEBGL_debug_renderer_info');
+        let u = o.getExtension('WEBGL_debug_renderer_info');
         u &&
           (c.push('webgl unmasked vendor:' + o.getParameter(u.UNMASKED_VENDOR_WEBGL)),
           c.push('webgl unmasked renderer:' + o.getParameter(u.UNMASKED_RENDERER_WEBGL)));
@@ -355,9 +355,9 @@ window.fipr = (function () {
             d(['VERTEX', 'FRAGMENT'], function (a) {
               d(['HIGH', 'MEDIUM', 'LOW'], function (r) {
                 d(['precision', 'rangeMin', 'rangeMax'], function (e) {
-                  var t = o.getShaderPrecisionFormat(o[a + '_SHADER'], o[r + '_' + i])[e];
+                  let t = o.getShaderPrecisionFormat(o[a + '_SHADER'], o[r + '_' + i])[e];
                   'precision' !== e && (e = 'precision ' + e);
-                  var n = [
+                  let n = [
                     'webgl ',
                     a.toLowerCase(),
                     ' shader ',
@@ -380,7 +380,7 @@ window.fipr = (function () {
     },
     S = function () {
       try {
-        var e = I(),
+        let e = I(),
           t = e.getExtension('WEBGL_debug_renderer_info'),
           n = e.getParameter(t.UNMASKED_VENDOR_WEBGL) + '~' + e.getParameter(t.UNMASKED_RENDERER_WEBGL);
         return M(e), n;
@@ -389,9 +389,9 @@ window.fipr = (function () {
       }
     },
     C = function () {
-      var e = document.createElement('div');
+      let e = document.createElement('div');
       e.innerHTML = '&nbsp;';
-      var t = !(e.className = 'adsbox');
+      let t = !(e.className = 'adsbox');
       try {
         document.body.appendChild(e),
           (t = 0 === document.getElementsByClassName('adsbox')[0].offsetHeight),
@@ -414,7 +414,7 @@ window.fipr = (function () {
       return window.screen.width < window.screen.availWidth || window.screen.height < window.screen.availHeight;
     },
     _ = function () {
-      var e = navigator.userAgent.toLowerCase(),
+      let e = navigator.userAgent.toLowerCase(),
         t = navigator.oscpu,
         n = navigator.platform.toLowerCase(),
         r =
@@ -480,7 +480,7 @@ window.fipr = (function () {
       );
     },
     P = function () {
-      var e,
+      let e,
         t = navigator.userAgent.toLowerCase(),
         n = navigator.productSub;
       if (0 <= t.indexOf('edge/') || 0 <= t.indexOf('iemobile/')) return !1;
@@ -509,7 +509,7 @@ window.fipr = (function () {
         '20030107' !== n
       )
         return !0;
-      var r,
+      let r,
         a = eval.toString().length;
       if (37 === a && 'Safari' !== e && 'Firefox' !== e && 'Other' !== e) return !0;
       if (39 === a && 'Internet Explorer' !== e && 'Other' !== e) return !0;
@@ -526,12 +526,12 @@ window.fipr = (function () {
       return r && 'Firefox' !== e && 'Other' !== e;
     },
     R = function () {
-      var e = document.createElement('canvas');
+      let e = document.createElement('canvas');
       return !(!e.getContext || !e.getContext('2d'));
     },
     D = function () {
       if (!R()) return !1;
-      var e = I(),
+      let e = I(),
         t = !!window.WebGLRenderingContext && !!e;
       return M(e), t;
     },
@@ -542,7 +542,7 @@ window.fipr = (function () {
       );
     },
     I = function () {
-      var e = document.createElement('canvas'),
+      let e = document.createElement('canvas'),
         t = null;
       try {
         t = e.getContext('webgl') || e.getContext('experimental-webgl');
@@ -550,7 +550,7 @@ window.fipr = (function () {
       return (t = t || null);
     },
     M = function (e) {
-      var t = e.getExtension('WEBGL_lose_context');
+      let t = e.getExtension('WEBGL_lose_context');
       null != t && t.loseContext();
     },
     k = [
@@ -808,7 +808,7 @@ window.fipr = (function () {
             r = {},
             i = {},
             g = function () {
-              var e = document.createElement('span');
+              let e = document.createElement('span');
               return (
                 (e.style.position = 'absolute'),
                 (e.style.left = '-9999px'),
@@ -836,17 +836,17 @@ window.fipr = (function () {
             },
             c = (function () {
               for (var e = [], t = 0, n = d.length; t < n; t++) {
-                var r = g();
+                let r = g();
                 (r.style.fontFamily = d[t]), a.appendChild(r), e.push(r);
               }
               return e;
             })();
           n.appendChild(a);
-          for (var u = 0, s = d.length; u < s; u++) (r[d[u]] = c[u].offsetWidth), (i[d[u]] = c[u].offsetHeight);
-          var h = (function () {
+          for (let u = 0, s = d.length; u < s; u++) (r[d[u]] = c[u].offsetWidth), (i[d[u]] = c[u].offsetHeight);
+          let h = (function () {
             for (var e, t, n, r = {}, a = 0, i = l.length; a < i; a++) {
               for (var o = [], c = 0, u = d.length; c < u; c++) {
-                var s = ((e = l[a]), (t = d[c]), (n = void 0), ((n = g()).style.fontFamily = "'" + e + "'," + t), n);
+                let s = ((e = l[a]), (t = d[c]), (n = void 0), ((n = g()).style.fontFamily = "'" + e + "'," + t), n);
                 f.appendChild(s), o.push(s);
               }
               r[l[a]] = o;
@@ -862,14 +862,14 @@ window.fipr = (function () {
       {
         key: 'audio',
         getData: function (r, e) {
-          var t = e.audio;
+          let t = e.audio;
           if (t.excludeIOS11 && navigator.userAgent.match(/OS 11.+Version\/11.+Safari/)) return r(e.EXCLUDED);
-          var n = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+          let n = window.OfflineAudioContext || window.webkitOfflineAudioContext;
           if (null == n) return r(e.NOT_AVAILABLE);
-          var a = new n(1, 44100, 44100),
+          let a = new n(1, 44100, 44100),
             i = a.createOscillator();
           (i.type = 'triangle'), i.frequency.setValueAtTime(1e4, a.currentTime);
-          var o = a.createDynamicsCompressor();
+          let o = a.createDynamicsCompressor();
           d(
             [
               ['threshold', -50],
@@ -889,7 +889,7 @@ window.fipr = (function () {
             o.connect(a.destination),
             i.start(0),
             a.startRendering();
-          var c = setTimeout(function () {
+          let c = setTimeout(function () {
             return (
               console.warn(
                 'Audio fingerprint timed out. Please report bug at https://github.com/Valve/fingerprintjs2 with your user agent: "' +
@@ -902,7 +902,7 @@ window.fipr = (function () {
             );
           }, t.timeout);
           a.oncomplete = function (e) {
-            var t;
+            let t;
             try {
               clearTimeout(c),
                 (t = e.renderedBuffer
@@ -934,7 +934,7 @@ window.fipr = (function () {
           o = function (e) {
             if (k.length <= (i += 1)) r(a.data);
             else {
-              var t = k[i];
+              let t = k[i];
               if (c.excludes[t.key]) o(!1);
               else {
                 if (!e && t.pauseBefore)

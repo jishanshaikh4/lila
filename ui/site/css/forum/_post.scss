@@ -1,7 +1,7 @@
 .forum-post {
   font-size: 1.1em;
   border-top: $border;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 0.5rem 0;
 
   &__metas {
     @extend %flex-between;

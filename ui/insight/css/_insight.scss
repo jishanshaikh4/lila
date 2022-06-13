@@ -8,7 +8,7 @@
   }
 
   .crunching {
-    margin: 3em 0 2em 0;
+    margin: 3em 0 2em;
   }
 
   .loading {
@@ -248,7 +248,7 @@
 
     .ms-choice {
       padding: 15px 10px;
-      border-width: 0 0 1px 0;
+      border-width: 0 0 1px;
 
       @include transition;
     }
@@ -333,7 +333,7 @@
       text-transform: uppercase;
       font-weight: normal;
       opacity: 0.6;
-      padding: 6px 8px 2px 8px;
+      padding: 6px 8px 2px;
     }
 
     ul > li:first-child label.optgroup {
@@ -402,7 +402,7 @@
   }
 
   .game-sample {
-    margin: 2em 0 1em 0;
+    margin: 2em 0 1em;
     border-top: $border;
     box-shadow: none;
   }

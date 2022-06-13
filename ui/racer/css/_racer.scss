@@ -102,7 +102,7 @@
       color: $c-brag;
       margin: 1em 0;
       @include breakpoint($mq-col2) {
-        margin: 1em 0 0 0;
+        margin: 1em 0 0;
       }
     }
   }
@@ -113,7 +113,7 @@
 
   &__post__next {
     &__new {
-      margin: 2em 0 1em 0;
+      margin: 2em 0 1em;
     }
     &__button {
       width: 100%;

@@ -1,5 +1,5 @@
-var user = db.user4.findOne({ _id: 'thibault' });
-var connections = [];
+let user = db.user4.findOne({ _id: 'thibault' });
+let connections = [];
 db.security
   .find({ user: user._id, $or: [{ up: true }, { date: { $gt: new Date(Date.now() - 1000 * 3600 * 24 * 30 * 6) } }] })
   .map(o => `${o.ip} ${o.ua}`)

@@ -1,5 +1,5 @@
-var now = new Date();
-var inOneMonth = new Date(ISODate().getTime() + 1000 * 60 * 60 * 24 * 31);
+let now = new Date();
+let inOneMonth = new Date(ISODate().getTime() + 1000 * 60 * 60 * 24 * 31);
 
 db.plan_patron.remove({});
 db.plan_charge.remove({});
@@ -19,10 +19,10 @@ db.user4.update(
   }
 );
 
-var userIds = [];
+let userIds = [];
 
 function donationToPatron(donation) {
-  var charge = {
+  let charge = {
     _id: donation._id,
     date: donation.date,
     cents: donation.gross,
@@ -38,7 +38,7 @@ function donationToPatron(donation) {
   if (userIds.indexOf(donation.userId) !== -1) return;
   userIds.push(donation.userId);
 
-  var patron = {
+  let patron = {
     _id: donation.userId,
     payPal: {
       lastCharge: donation.date,

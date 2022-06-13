@@ -1,4 +1,4 @@
-var retina = window.devicePixelRatio,
+let retina = window.devicePixelRatio,
   // Math shorthands
   PI = Math.PI,
   sqrt = Math.sqrt,
@@ -20,12 +20,12 @@ var retina = window.devicePixelRatio,
   /**
    * Fallback implementation.
    */
-  var prev = _now();
+  let prev = _now();
 
   function fallback(fn) {
-    var curr = _now();
-    var ms = Math.max(0, 16 - (curr - prev));
-    var req = setTimeout(fn, ms);
+    let curr = _now();
+    let ms = Math.max(0, 16 - (curr - prev));
+    let req = setTimeout(fn, ms);
     prev = curr;
     return req;
   }
@@ -33,7 +33,7 @@ var retina = window.devicePixelRatio,
   /**
    * Cancel.
    */
-  var cancel = w.cancelAnimationFrame || w.webkitCancelAnimationFrame || w.clearTimeout;
+  let cancel = w.cancelAnimationFrame || w.webkitCancelAnimationFrame || w.clearTimeout;
 
   rAF = w.requestAnimationFrame || w.webkitRequestAnimationFrame || fallback;
 
@@ -43,7 +43,7 @@ var retina = window.devicePixelRatio,
 })(window);
 
 (function () {
-  var speed = 50,
+  let speed = 50,
     duration = 1.0 / speed,
     confettiRibbonCount = 11,
     ribbonPaperCount = 30,
@@ -84,17 +84,17 @@ var retina = window.devicePixelRatio,
       this.y *= _f;
     };
     this.Normalize = function () {
-      var sqrLen = this.SqrLength();
+      let sqrLen = this.SqrLength();
       if (sqrLen != 0) {
-        var factor = 1.0 / sqrt(sqrLen);
+        let factor = 1.0 / sqrt(sqrLen);
         this.x *= factor;
         this.y *= factor;
       }
     };
     this.Normalized = function () {
-      var sqrLen = this.SqrLength();
+      let sqrLen = this.SqrLength();
       if (sqrLen != 0) {
-        var factor = 1.0 / sqrt(sqrLen);
+        let factor = 1.0 / sqrt(sqrLen);
         return new Vector2(this.x * factor, this.y * factor);
       }
       return new Vector2(0, 0);
@@ -107,8 +107,8 @@ var retina = window.devicePixelRatio,
     return sqrt(Vector2.SqrDistance(_vec0, _vec1));
   };
   Vector2.SqrDistance = function (_vec0, _vec1) {
-    var x = _vec0.x - _vec1.x;
-    var y = _vec0.y - _vec1.y;
+    let x = _vec0.x - _vec1.x;
+    let y = _vec0.y - _vec1.y;
     return x * x + y * y + z * z;
   };
   Vector2.Scale = function (_vec0, _vec1) {
@@ -121,7 +121,7 @@ var retina = window.devicePixelRatio,
     return new Vector2(Math.max(_vec0.x, _vec1.x), Math.max(_vec0.y, _vec1.y));
   };
   Vector2.ClampMagnitude = function (_vec0, _len) {
-    var vecNorm = _vec0.Normalized;
+    let vecNorm = _vec0.Normalized;
     return new Vector2(vecNorm.x * _len, vecNorm.y * _len);
   };
   Vector2.Sub = function (_vec0, _vec1) {
@@ -137,8 +137,8 @@ var retina = window.devicePixelRatio,
       this.force.Add(_f);
     };
     this.Integrate = function (_dt) {
-      var acc = this.CurrentForce(this.position);
-      var posDelta = new Vector2(this.velocity.x, this.velocity.y);
+      let acc = this.CurrentForce(this.position);
+      let posDelta = new Vector2(this.velocity.x, this.velocity.y);
       posDelta.Mul(_dt);
       this.position.Add(posDelta);
       acc.Mul(_dt);
@@ -146,9 +146,9 @@ var retina = window.devicePixelRatio,
       this.force = new Vector2(0, 0);
     };
     this.CurrentForce = function (_pos, _vel) {
-      var totalForce = new Vector2(this.force.x, this.force.y);
-      var speed = this.velocity.Length();
-      var dragVel = new Vector2(this.velocity.x, this.velocity.y);
+      let totalForce = new Vector2(this.force.x, this.force.y);
+      let speed = this.velocity.Length();
+      let dragVel = new Vector2(this.velocity.x, this.velocity.y);
       dragVel.Mul(this.drag * speed);
       totalForce.Sub(dragVel);
       return totalForce;
@@ -165,14 +165,14 @@ var retina = window.devicePixelRatio,
     this.oscillationSpeed = random() * 1.5 + 0.5;
     this.xSpeed = 40.0;
     this.ySpeed = random() * 60 + 50.0;
-    this.corners = new Array();
+    this.corners = [];
     this.time = random();
-    var ci = round(random() * (colors.length - 1));
+    let ci = round(random() * (colors.length - 1));
     this.frontColor = colors[ci][0];
     this.backColor = colors[ci][1];
-    for (var i = 0; i < 4; i++) {
-      var dx = cos(this.angle + DEG_TO_RAD * (i * 90 + 45));
-      var dy = sin(this.angle + DEG_TO_RAD * (i * 90 + 45));
+    for (let i = 0; i < 4; i++) {
+      let dx = cos(this.angle + DEG_TO_RAD * (i * 90 + 45));
+      let dy = sin(this.angle + DEG_TO_RAD * (i * 90 + 45));
       this.corners[i] = new Vector2(dx, dy);
     }
     this.Update = function (_dt) {
@@ -197,7 +197,7 @@ var retina = window.devicePixelRatio,
         (this.pos.x + this.corners[0].x * this.size) * retina,
         (this.pos.y + this.corners[0].y * this.size * this.cosA) * retina
       );
-      for (var i = 1; i < 4; i++) {
+      for (let i = 1; i < 4; i++) {
         _g.lineTo(
           (this.pos.x + this.corners[i].x * this.size) * retina,
           (this.pos.y + this.corners[i].y * this.size * this.cosA) * retina
@@ -213,8 +213,8 @@ var retina = window.devicePixelRatio,
     this.particleDist = _dist;
     this.particleCount = _count;
     this.particleDrag = _drag;
-    this.particles = new Array();
-    var ci = round(random() * (colors.length - 1));
+    this.particles = [];
+    let ci = round(random() * (colors.length - 1));
     this.frontColor = colors[ci][0];
     this.backColor = colors[ci][1];
     this.xOff = cos(DEG_TO_RAD * _angle) * _thickness;
@@ -226,21 +226,21 @@ var retina = window.devicePixelRatio,
     this.oscillationSpeed = random() * 2 + 2;
     this.oscillationDistance = random() * 40 + 40;
     this.ySpeed = random() * 40 + 80;
-    for (var i = 0; i < this.particleCount; i++) {
+    for (let i = 0; i < this.particleCount; i++) {
       this.particles[i] = new EulerMass(_x, _y - i * this.particleDist, this.particleDrag);
     }
     this.Update = function (_dt) {
-      var i = 0;
+      let i = 0;
       this.time += _dt * this.oscillationSpeed;
       this.position.y += this.ySpeed * _dt;
       this.position.x += cos(this.time) * this.oscillationDistance * _dt;
       this.particles[0].position = this.position;
-      var dX = this.prevPosition.x - this.position.x;
-      var dY = this.prevPosition.y - this.position.y;
-      var delta = sqrt(dX * dX + dY * dY);
+      let dX = this.prevPosition.x - this.position.x;
+      let dY = this.prevPosition.y - this.position.y;
+      let delta = sqrt(dX * dX + dY * dY);
       this.prevPosition = new Vector2(this.position.x, this.position.y);
       for (i = 1; i < this.particleCount; i++) {
-        var dirP = Vector2.Sub(this.particles[i - 1].position, this.particles[i].position);
+        let dirP = Vector2.Sub(this.particles[i - 1].position, this.particles[i].position);
         dirP.Normalize();
         dirP.Mul((delta / _dt) * this.velocityInherit);
         this.particles[i].AddForce(dirP);
@@ -249,7 +249,7 @@ var retina = window.devicePixelRatio,
         this.particles[i].Integrate(_dt);
       }
       for (i = 1; i < this.particleCount; i++) {
-        var rp2 = new Vector2(this.particles[i].position.x, this.particles[i].position.y);
+        let rp2 = new Vector2(this.particles[i].position.x, this.particles[i].position.y);
         rp2.Sub(this.particles[i - 1].position);
         rp2.Normalize();
         rp2.Mul(this.particleDist);
@@ -269,18 +269,18 @@ var retina = window.devicePixelRatio,
       this.oscillationSpeed = random() * 2.0 + 1.5;
       this.oscillationDistance = random() * 40 + 40;
       this.ySpeed = random() * 40 + 80;
-      var ci = round(random() * (colors.length - 1));
+      let ci = round(random() * (colors.length - 1));
       this.frontColor = colors[ci][0];
       this.backColor = colors[ci][1];
-      this.particles = new Array();
-      for (var i = 0; i < this.particleCount; i++) {
+      this.particles = [];
+      for (let i = 0; i < this.particleCount; i++) {
         this.particles[i] = new EulerMass(this.position.x, this.position.y - i * this.particleDist, this.particleDrag);
       }
     };
     this.Draw = function (_g) {
-      for (var i = 0; i < this.particleCount - 1; i++) {
-        var p0 = new Vector2(this.particles[i].position.x + this.xOff, this.particles[i].position.y + this.yOff);
-        var p1 = new Vector2(
+      for (let i = 0; i < this.particleCount - 1; i++) {
+        let p0 = new Vector2(this.particles[i].position.x + this.xOff, this.particles[i].position.y + this.yOff);
+        let p1 = new Vector2(
           this.particles[i + 1].position.x + this.xOff,
           this.particles[i + 1].position.y + this.yOff
         );
@@ -361,16 +361,16 @@ var retina = window.devicePixelRatio,
   ConfettiRibbon.bounds = new Vector2(0, 0);
   confetti = {};
   confetti.Context = function (id) {
-    var i = 0;
-    var canvas = document.getElementById(id);
-    var canvasParent = canvas.parentNode;
-    var canvasWidth = canvasParent.offsetWidth;
-    var canvasHeight = canvasParent.offsetHeight;
+    let i = 0;
+    let canvas = document.getElementById(id);
+    let canvasParent = canvas.parentNode;
+    let canvasWidth = canvasParent.offsetWidth;
+    let canvasHeight = canvasParent.offsetHeight;
     canvas.width = canvasWidth * retina;
     canvas.height = canvasHeight * retina;
-    var context = canvas.getContext('2d');
-    var interval = null;
-    var confettiRibbons = new Array();
+    let context = canvas.getContext('2d');
+    let interval = null;
+    let confettiRibbons = [];
     ConfettiRibbon.bounds = new Vector2(canvasWidth, canvasHeight);
     for (i = 0; i < confettiRibbonCount; i++) {
       confettiRibbons[i] = new ConfettiRibbon(
@@ -383,7 +383,7 @@ var retina = window.devicePixelRatio,
         0.05
       );
     }
-    var confettiPapers = new Array();
+    let confettiPapers = [];
     ConfettiPaper.bounds = new Vector2(canvasWidth, canvasHeight);
     for (i = 0; i < confettiPaperCount; i++) {
       confettiPapers[i] = new ConfettiPaper(random() * canvasWidth, random() * canvasHeight);
@@ -398,14 +398,14 @@ var retina = window.devicePixelRatio,
     };
     this.start = function () {
       this.stop();
-      var context = this;
+      let context = this;
       this.update();
     };
     this.stop = function () {
       cAF(this.interval);
     };
     this.update = function () {
-      var i = 0;
+      let i = 0;
       context.clearRect(0, 0, canvas.width, canvas.height);
       for (i = 0; i < confettiPaperCount; i++) {
         confettiPapers[i].Update(duration);
@@ -420,11 +420,11 @@ var retina = window.devicePixelRatio,
       });
     };
   };
-  var id = 'confetti';
+  let id = 'confetti';
   var confetti = new confetti.Context(id);
   confetti.start();
   setTimeout(function () {
-    var $el = $('#' + id).addClass('faded');
+    let $el = $('#' + id).addClass('faded');
     setTimeout(function () {
       confetti.stop();
       $el.hide();

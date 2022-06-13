@@ -3,12 +3,12 @@ lichess.load.then(() => {
     return size + "px 'Noto Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, Arial, Helvetica, sans-serif";
   };
   Highcharts.theme = (function () {
-    var light = $('body').hasClass('light');
-    var text = {
+    let light = $('body').hasClass('light');
+    let text = {
       weak: light ? '#a0a0a0' : '#707070',
       strong: light ? '#707070' : '#a0a0a0',
     };
-    var line = {
+    let line = {
       weak: light ? '#ccc' : '#404040',
       strong: light ? '#a0a0a0' : '#606060',
       fat: '#d85000', // light ? '#a0a0a0' : '#707070'
@@ -82,7 +82,7 @@ lichess.load.then(() => {
   })();
   Highcharts.setOptions(Highcharts.theme);
 
-  var buildChart = function (opt) {
+  let buildChart = function (opt) {
     return {
       chart: {
         type: 'gauge',
@@ -204,7 +204,7 @@ lichess.load.then(() => {
     };
   };
 
-  var charts = {};
+  let charts = {};
 
   Highcharts.chart(
     document.querySelector('.server .meter'),
@@ -224,14 +224,14 @@ lichess.load.then(() => {
       charts.network = c;
     }
   );
-  var values = {
+  let values = {
     server: -1,
     network: -1,
   };
 
-  var updateAnswer = function () {
+  let updateAnswer = function () {
     if (values.server === -1 || values.network === -1) return;
-    var c;
+    let c;
     if (values.server <= 100 && values.network <= 500) c = 'nope-nope';
     else if (values.server <= 100) c = 'nope-yep';
     else c = 'yep';

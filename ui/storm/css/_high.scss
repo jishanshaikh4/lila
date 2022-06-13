@@ -16,7 +16,7 @@
     flex: 1 1 auto;
     margin-right: 4%;
     background: $c-bg-box;
-    padding: 3em 1em 1.5em 1em;
+    padding: 3em 1em 1.5em;
 
     @include breakpoint($mq-not-xx-small) {
       flex: 48% 0;

@@ -20,7 +20,7 @@ $c-slider: $c-setup;
   }
 
   group.radio {
-    margin: 0 auto 1em auto;
+    margin: 0 auto 1em;
     width: 70%;
 
     .disabled {
@@ -70,7 +70,7 @@ $c-slider: $c-setup;
     .board_editor {
       display: block;
       width: 50%;
-      margin: 0.5em auto 0 auto;
+      margin: 0.5em auto 0;
     }
 
     .fen_form {
@@ -96,7 +96,7 @@ $c-slider: $c-setup;
 
     input {
       font-size: 1.5em;
-      padding: 0.5em 0.5em 0 0.5em;
+      padding: 0.5em 0.5em 0;
       width: 100%;
     }
   }
@@ -174,7 +174,7 @@ $c-slider: $c-setup;
     .spinner {
       width: 85px;
       height: 85px;
-      margin: 10px auto 20px auto;
+      margin: 10px auto 20px;
     }
   }
 }

@@ -1,7 +1,7 @@
-var id = 'winter17';
-var copyFromId = 'autumn17';
+let id = 'winter17';
+let copyFromId = 'autumn17';
 
-var t = db.tournament2.findOne({ _id: copyFromId });
+let t = db.tournament2.findOne({ _id: copyFromId });
 
 // overrides
 t._id = id;

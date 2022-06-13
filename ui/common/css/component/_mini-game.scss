@@ -12,10 +12,10 @@
     @extend %flex-between-nowrap;
     @extend %page-text-shadow !optional;
 
-    padding: 3px 2px 0 2px;
+    padding: 3px 2px 0;
 
     &:first-child {
-      padding: 0 2px 2px 2px;
+      padding: 0 2px 2px;
     }
   }
 

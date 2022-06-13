@@ -116,7 +116,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
       }
 
       p {
-        margin: 0.5em 0 0 0;
+        margin: 0.5em 0 0;
       }
 
       &-archived {
@@ -160,7 +160,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
 
 .dashboard {
   .flash {
-    margin: 2em 2em 0 2em;
+    margin: 2em 2em 0;
 
     &__content {
       padding: 2em var(--box-padding);
@@ -228,7 +228,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
 
       flex: 1 1 auto;
       text-align: center;
-      padding: 1.2em 0 0.8em 0;
+      padding: 1.2em 0 0.8em;
 
       &:first-child {
         @extend %box-radius-top-right;
@@ -367,7 +367,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
     }
 
     &-students h2 {
-      margin: 2em 0 1em 0;
+      margin: 2em 0 1em;
     }
   }
 }
@@ -474,7 +474,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
 
     background: fade-out($c-primary, 0.8);
     padding: 1em 2em;
-    margin: 1em 0 2em 0;
+    margin: 1em 0 2em;
 
     p {
       margin: 0;
@@ -493,7 +493,7 @@ $c-bg-clas-over-dim: mix($c-bg-clas-over, $c-bg-clas, 80%);
   }
 
   .activity {
-    margin: 1em 0 2em 0;
+    margin: 1em 0 2em;
   }
 
   &__archived {

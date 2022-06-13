@@ -96,7 +96,7 @@
 
     h1 {
       font-size: 2em;
-      margin: 0 0 0.5em 0;
+      margin: 0 0 0.5em;
       padding: 0;
     }
   }
@@ -205,7 +205,7 @@
     .gift {
       @extend %flex-center;
       justify-content: center;
-      margin: -1em 0 1em 0;
+      margin: -1em 0 1em;
     }
   }
 
@@ -220,7 +220,7 @@
     display: flex;
     flex-flow: row wrap;
     align-items: flex-start;
-    margin: 50px 0 40px 0;
+    margin: 50px 0 40px;
     padding: 30px 0;
     border-top: $border;
     border-bottom: $border;
@@ -228,7 +228,7 @@
 
     dl {
       flex: 1 0 200px;
-      margin: 0 0.2em 1em 0.2em;
+      margin: 0 0.2em 1em;
     }
 
     dt {
@@ -279,7 +279,7 @@
 
     h2 {
       font-size: 1.5em;
-      margin: 300px 0 0.4em 0;
+      margin: 300px 0 0.4em;
       border-bottom: $border;
     }
 

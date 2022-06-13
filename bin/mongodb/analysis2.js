@@ -1,9 +1,9 @@
-var gamesToMigrate = db.analysis.find();
-var max = gamesToMigrate.count();
-var batchSize = 1000;
-var collection = db.analysis2;
+let gamesToMigrate = db.analysis.find();
+let max = gamesToMigrate.count();
+let batchSize = 1000;
+let collection = db.analysis2;
 
-var piotr = {
+let piotr = {
   a: 'A1',
   b: 'B1',
   c: 'C1',
@@ -82,19 +82,19 @@ print('Migrating ' + max + ' analysis');
 
 collection.drop();
 
-var nb = 0,
+let nb = 0,
   dat = new Date().getTime() / 1000;
 gamesToMigrate.forEach(function (a) {
-  var encoded = a.encoded;
+  let encoded = a.encoded;
   if (!encoded) return;
   if (typeof encoded == 'undefined') return;
   try {
-    var splitted = encoded.split(' ');
-    var data = [];
+    let splitted = encoded.split(' ');
+    let data = [];
     for (it = 0, l = splitted.length - 1; it < l; it++) {
-      var cur = splitted[it].split(',');
-      var next = splitted[it + 1].split(',');
-      var move = decodePiotr(cur[0]),
+      let cur = splitted[it].split(',');
+      let next = splitted[it + 1].split(',');
+      let move = decodePiotr(cur[0]),
         best = decodePiotr(cur[1]),
         score = decodeScore(next[2]),
         mate = decodeScore(next[3]);
@@ -113,9 +113,9 @@ gamesToMigrate.forEach(function (a) {
   }
   ++nb;
   if (nb % batchSize == 0) {
-    var percent = Math.round((nb / max) * 100);
-    var dat2 = new Date().getTime() / 1000;
-    var perSec = Math.round(batchSize / (dat2 - dat));
+    let percent = Math.round((nb / max) * 100);
+    let dat2 = new Date().getTime() / 1000;
+    let perSec = Math.round(batchSize / (dat2 - dat));
     dat = dat2;
     print(nb / 1000 + 'k ' + percent + '% ' + perSec + '/s');
   }

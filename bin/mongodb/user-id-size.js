@@ -1,4 +1,4 @@
-var coll = db.user4;
+let coll = db.user4;
 
 print('Migrating ' + coll.count() + ' users');
 

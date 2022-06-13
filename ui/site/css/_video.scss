@@ -72,7 +72,7 @@
       height: 80%;
       border-top: $border;
       z-index: 1;
-      padding: 10px 10px 0 10px;
+      padding: 10px 10px 0;
       opacity: 0;
 
       @include transition;
@@ -139,7 +139,7 @@
     }
 
     .meta {
-      padding: 0 25px 10px 25px;
+      padding: 0 25px 10px;
 
       .target {
         display: block;
@@ -238,7 +238,7 @@
       color: $c-font;
       display: inline-block;
       padding: 3px 5px;
-      margin: 5px 5px;
+      margin: 5px;
       background: $c-bg-zebra;
       text-transform: capitalize;
 
@@ -273,7 +273,7 @@
 
     .explain {
       text-align: center;
-      margin: 50px 0 35px 0;
+      margin: 50px 0 35px;
     }
   }
 }

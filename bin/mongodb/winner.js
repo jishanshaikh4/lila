@@ -1,4 +1,4 @@
-var gamesToMigrate = db.game5
+let gamesToMigrate = db.game5
   .find(
     {
       $or: [
@@ -17,8 +17,8 @@ var gamesToMigrate = db.game5
   .sort({ ca: -1 });
 
 gamesToMigrate.forEach(function (g) {
-  var color = !!(g.p0 && g.p0.w);
-  var update = {
+  let color = !!(g.p0 && g.p0.w);
+  let update = {
     $unset: color
       ? {
           'p0.w': true,

@@ -1,6 +1,6 @@
-var userId = 'shork'.toLowerCase();
+let userId = 'shork'.toLowerCase();
 
-var prev = db.user4.findOne({ _id: userId }).plan;
+let prev = db.user4.findOne({ _id: userId }).plan;
 
 db.user4.update(
   { _id: userId },

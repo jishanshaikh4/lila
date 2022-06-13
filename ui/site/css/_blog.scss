@@ -102,14 +102,14 @@
 
     h2 {
       border-bottom: 1px solid $c-border;
-      margin: 1.6em 0 1em 0;
+      margin: 1.6em 0 1em;
     }
 
     h3 {
       @include fluid-size('font-size', 18px, 30px);
 
       font-weight: bold;
-      margin: 1.6em 0 1em 0;
+      margin: 1.6em 0 1em;
     }
 
     h4 {

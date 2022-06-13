@@ -54,8 +54,8 @@
   .explanation {
     @extend %box-neat;
 
-    margin: 3em 10% 1em 10%;
-    padding: 2em 3em 3em 3em;
+    margin: 3em 10% 1em;
+    padding: 2em 3em 3em;
     background: mix($c-good, $c-bg-box, 30%);
     font-size: 1.3em;
 
@@ -107,8 +107,8 @@
 
     .explanation {
       font-size: 1.1em;
-      margin: 3em 0 1em 0;
-      padding: 2em 1em 3em 1em;
+      margin: 3em 0 1em;
+      padding: 2em 1em 3em;
     }
   }
 }

@@ -2,7 +2,7 @@
   &__title {
     @extend %break-word;
     text-align: center;
-    margin: 3rem 0 3rem;
+    margin: 3rem 0;
   }
   &__meta {
     text-align: center;
@@ -101,7 +101,7 @@
     display: block;
   }
   &__footer {
-    margin: 5em 0 0 0;
+    margin: 5em 0 0;
     h2 {
       margin-bottom: 1.5em;
     }
@@ -110,9 +110,9 @@
     @extend %flex-center;
     justify-content: center;
     font-size: 2em;
-    margin: 0 0 2rem 0;
+    margin: 0 0 2rem;
     .button {
-      margin: 0 1em 2rem 1em;
+      margin: 0 1em 2rem;
       padding: 0.8em 1.5em;
       border-radius: 5px;
       &-label {

@@ -1,5 +1,5 @@
-var usersToMigrate = db.user2.find();
-var collection = db.user3;
+let usersToMigrate = db.user2.find();
+let collection = db.user3;
 
 print('Migrating ' + usersToMigrate.count() + ' users');
 

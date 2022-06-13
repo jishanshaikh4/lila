@@ -7,8 +7,8 @@ db.user4
     { _id: 1, plan: 1 }
   )
   .forEach(user => {
-    var userId = user._id;
-    var prev = user.plan || {};
+    let userId = user._id;
+    let prev = user.plan || {};
 
     print(userId, !!prev.active);
 

@@ -11,22 +11,20 @@ function changeFenMoveNumber(fen, n) {
 }
 
 puzzles
-  .find({
-    _id: {
-      $lt: 60121,
-    },
-  })
-  .forEach(function (p) {
-    let newMoveNumber = fullMoveNumber(p);
-    let newFen = changeFenMoveNumber(p.fen, newMoveNumber);
-    puzzles.update(
-      {
-        _id: p._id,
+    .find({
+      _id : {
+        $lt : 60121,
       },
-      {
-        $set: {
-          fen: newFen,
-        },
-      }
-    );
-  });
+    })
+    .forEach(function(p) {
+      let newMoveNumber = fullMoveNumber(p);
+      let newFen = changeFenMoveNumber(p.fen, newMoveNumber);
+      puzzles.update({
+        _id : p._id,
+      },
+                     {
+                       $set : {
+                         fen : newFen,
+                       },
+                     });
+    });

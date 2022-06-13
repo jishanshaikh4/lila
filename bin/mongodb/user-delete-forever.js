@@ -1,10 +1,10 @@
-var username = 'jamesflynn';
-var userId = username.toLowerCase();
-var user = db.user4.findOne({
+let username = 'jamesflynn';
+let userId = username.toLowerCase();
+let user = db.user4.findOne({
   _id: userId,
 });
 if (!user) throw 'No such user';
-var multi = {
+let multi = {
   multi: true,
 };
 print('\n\n Delete user ' + user.username + ' with ' + user.count.game + ' games!\n\n');
@@ -88,8 +88,8 @@ print(
 );
 
 print('Delete perf stats');
-var nb = 0;
-for (var i = 5; i <= 20; i++)
+let nb = 0;
+for (let i = 5; i <= 20; i++)
   nb += db.perf_stat.remove({
     _id: userId + '/' + i,
   }).nRemoved;

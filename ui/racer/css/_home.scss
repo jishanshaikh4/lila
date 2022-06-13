@@ -7,7 +7,7 @@
 
   &__buttons {
     @extend %flex-between;
-    margin: 4em 0 3em 0;
+    margin: 4em 0 3em;
   }
 
   form {
@@ -79,7 +79,7 @@
   }
 
   &__about {
-    margin: 5em auto 0 auto;
+    margin: 5em auto 0;
     text-align: center;
   }
 }

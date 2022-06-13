@@ -1,5 +1,5 @@
 function loadShepherd(f) {
-  var theme = 'shepherd-theme-' + ($('body').hasClass('dark') ? 'dark' : 'default');
+  let theme = 'shepherd-theme-' + ($('body').hasClass('dark') ? 'dark' : 'default');
   lichess.loadCss('vendor/' + theme + '.css');
   lichess.loadScript('vendor/shepherd/dist/js/tether.js', { noVersion: true }).then(function () {
     lichess.loadScript('vendor/shepherd/dist/js/shepherd.min.js', { noVersion: true }).then(function () {
@@ -9,14 +9,14 @@ function loadShepherd(f) {
 }
 lichess.studyTourChapter = function (study) {
   loadShepherd(function (theme) {
-    var onTab = function (tab) {
+    let onTab = function (tab) {
       return {
         'before-show': function () {
           study.setTab(tab);
         },
       };
     };
-    var tour = new Shepherd.Tour({
+    let tour = new Shepherd.Tour({
       defaults: {
         classes: theme,
         scrollTo: false,

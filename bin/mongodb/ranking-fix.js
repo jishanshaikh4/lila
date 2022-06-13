@@ -1,7 +1,7 @@
-var users = db.user4;
-var ranking = db.ranking;
+let users = db.user4;
+let ranking = db.ranking;
 
-var cheats = [];
+let cheats = [];
 
 ranking
   .find(

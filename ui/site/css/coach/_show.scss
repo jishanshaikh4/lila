@@ -37,7 +37,7 @@
   }
 
   &__title {
-    margin: 0 0 1rem 0;
+    margin: 0 0 1rem;
     color: $c-brag;
     font-size: 1.8rem;
   }
@@ -46,7 +46,7 @@
     padding: 2em;
     background: #000;
     border: $border;
-    border-width: 0 1px 1px 1px;
+    border-width: 0 1px 1px;
 
     .list {
       display: flex;

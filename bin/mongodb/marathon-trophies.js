@@ -1,8 +1,8 @@
-var users = ['blitzstream-twitch', 'legend', 'admirala', 'hellball'];
+let users = ['blitzstream-twitch', 'legend', 'admirala', 'hellball'];
 
-for (var i in users) {
-  var kind = i == 0 ? 'marathonWinner' : 'marathonTopTen';
-  var user = users[i];
+for (let i in users) {
+  let kind = i == 0 ? 'marathonWinner' : 'marathonTopTen';
+  let user = users[i];
   db.trophy.insert({
     _id: kind + '/' + user,
     user: user,

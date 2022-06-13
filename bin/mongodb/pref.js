@@ -1,6 +1,6 @@
-var props = ['animation', 'autoQueen', 'autoThreefold', 'challenge', 'takeback'];
+let props = ['animation', 'autoQueen', 'autoThreefold', 'challenge', 'takeback'];
 db.pref.find().forEach(function (p) {
-  var set = {},
+  let set = {},
     unset = {};
   props.forEach(function (prop) {
     if (typeof p[prop] !== 'undefined') {

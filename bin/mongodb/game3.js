@@ -1,8 +1,8 @@
-var gamesToMigrate = db.game2.find();
-var max = gamesToMigrate.count();
-var batchSize = 10000;
-var collection = db.game3;
-var pgnCollection = db.pgn;
+let gamesToMigrate = db.game2.find();
+let max = gamesToMigrate.count();
+let batchSize = 10000;
+let collection = db.game3;
+let pgnCollection = db.pgn;
 
 print('Migrating ' + max + ' games');
 
@@ -47,10 +47,10 @@ function finishedOrAborted(game) {
   return game.status >= 25;
 }
 
-var c, z, pgn;
-var it = 0;
-var dat = new Date().getTime() / 1000;
-var finishedPlayerFieldsToRemove = ['previousMoveTs', 'lastDrawOffer', 'isOfferingDraw', 'isProposingTakeback'];
+let c, z, pgn;
+let it = 0;
+let dat = new Date().getTime() / 1000;
+let finishedPlayerFieldsToRemove = ['previousMoveTs', 'lastDrawOffer', 'isOfferingDraw', 'isProposingTakeback'];
 
 gamesToMigrate.forEach(function (g) {
   cleanOrRename(g, 'castles', 'cs');
@@ -122,9 +122,9 @@ gamesToMigrate.forEach(function (g) {
   }
   ++it;
   if (it % batchSize == 0) {
-    var percent = Math.round((it / max) * 100);
-    var dat2 = new Date().getTime() / 1000;
-    var perSec = Math.round(batchSize / (dat2 - dat));
+    let percent = Math.round((it / max) * 100);
+    let dat2 = new Date().getTime() / 1000;
+    let perSec = Math.round(batchSize / (dat2 - dat));
     dat = dat2;
     print(it / 1000 + 'k ' + percent + '% ' + perSec + '/s');
   }

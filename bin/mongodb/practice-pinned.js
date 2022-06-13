@@ -15,7 +15,10 @@ ids.forEach(id => {
       print('  - ' + chapter._id + ' ' + chapter.name);
       db.study_chapter.update(
         { _id: chapter._id },
-        { $set: { description: chapter.root.co[0].text }, $unset: { 'root.co': 1 } }
+        {
+          $set: { description: chapter.root.co[0].text },
+          $unset: { 'root.co': 1 },
+        }
       );
     });
 });

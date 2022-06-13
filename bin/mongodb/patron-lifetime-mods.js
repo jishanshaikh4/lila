@@ -2,7 +2,9 @@ db.user4
   .find(
     {
       enabled: true,
-      roles: { $in: ['ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_HUNTER', 'ROLE_SEE_REPORT'] },
+      roles: {
+        $in: ['ROLE_SUPER_ADMIN', 'ROLE_ADMIN', 'ROLE_HUNTER', 'ROLE_SEE_REPORT'],
+      },
     },
     { _id: 1, plan: 1 }
   )

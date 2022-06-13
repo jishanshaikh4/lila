@@ -8,7 +8,7 @@ function dig(chapId, node, path) {
       let set = {};
       set[`${path}.n`] = [];
       printjson(set);
-      db.study_chapter.update({ _id: chapId }, { $set: set });
+      db.study_chapter.update({_id : chapId}, {$set : set});
     } else {
       dig(chapId, c, newPath);
     }

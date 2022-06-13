@@ -7,18 +7,15 @@ print('Migrating ' + max + ' games');
 
 collection.drop();
 
-let timechars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+let timechars =
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let timecharsLength = timechars.length;
 let lastchar = timechars[timecharsLength - 1];
 
-let i,
-  t,
-  timeStrings,
-  times,
-  it = 0;
+let i, t, timeStrings, times, it = 0;
 let dat = new Date().getTime() / 1000;
-gamesToMigrate.forEach(function (g) {
-  g.p.forEach(function (p) {
+gamesToMigrate.forEach(function(g) {
+  g.p.forEach(function(p) {
     if (typeof p.mts != 'undefined') {
       if (p.mts === null || p.mts.length === 0) {
         delete p.mts;
@@ -50,11 +47,11 @@ gamesToMigrate.forEach(function (g) {
 });
 
 print('Building indexes');
-collection.ensureIndex({ s: 1 });
-collection.ensureIndex({ uids: 1 }, { sparse: 1 });
-collection.ensureIndex({ wid: 1 }, { sparse: 1 });
-collection.ensureIndex({ ca: -1 });
-collection.ensureIndex({ uids: 1, ca: -1 });
-collection.ensureIndex({ bm: 1 }, { sparse: 1 });
+collection.ensureIndex({s : 1});
+collection.ensureIndex({uids : 1}, {sparse : 1});
+collection.ensureIndex({wid : 1}, {sparse : 1});
+collection.ensureIndex({ca : -1});
+collection.ensureIndex({uids : 1, ca : -1});
+collection.ensureIndex({bm : 1}, {sparse : 1});
 
 print('Done!');
